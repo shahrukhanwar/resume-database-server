@@ -12,9 +12,7 @@ router.get('/', async (req, res) => {
       message: 'Successfully Retrieved Data!',
     });
   } catch (error) {
-    res
-      .status(500)
-      .send({ data: null, success: false, message: 'Something Went Wrong!' });
+    res.send({ data: null, success: false, message: 'Something Went Wrong!' });
   }
 });
 
@@ -39,9 +37,11 @@ router.patch('/:id', async (req, res) => {
     allowedUpdates.includes(update)
   );
   if (!isValidUpdates) {
-    return res
-      .status(400)
-      .send({ data: null, success: false, message: 'Invalid updates!' });
+    return res.send({
+      data: null,
+      success: false,
+      message: 'Invalid updates!',
+    });
   }
   try {
     const candidate = await Candidate.findById(req.params.id);
@@ -54,9 +54,7 @@ router.patch('/:id', async (req, res) => {
       message: 'Updated Successfully',
     });
   } catch (error) {
-    res
-      .status(400)
-      .send({ data: null, success: false, message: 'Something Went Wrong!' });
+    res.send({ data: null, success: false, message: 'Something Went Wrong!' });
   }
 });
 
@@ -66,9 +64,7 @@ router.delete('/:id', async (req, res) => {
     await Candidate.deleteOne({ _id: req.params.id });
     res.send({ data: null, success: true, message: 'Deleted Successfully!' });
   } catch (error) {
-    res
-      .status(400)
-      .send({ data: null, success: false, message: 'Something Went Wrong!' });
+    res.send({ data: null, success: false, message: 'Something Went Wrong!' });
   }
 });
 
@@ -83,9 +79,7 @@ router.post('/', async (req, res) => {
       message: 'Created Successfully!',
     });
   } catch (error) {
-    res
-      .status(400)
-      .send({ data: null, success: false, message: 'Something Went Wrong!' });
+    res.send({ data: null, success: false, message: 'Something Went Wrong!' });
   }
 });
 
@@ -103,9 +97,7 @@ router.post('/:id/tags', async (req, res) => {
       message: 'Tag Created Successfully!',
     });
   } catch (error) {
-    res
-      .status(400)
-      .send({ data: null, success: false, message: 'Something Went Wrong!' });
+    res.send({ data: null, success: false, message: 'Something Went Wrong!' });
   }
 });
 
@@ -122,9 +114,7 @@ router.delete('/:id/tags', async (req, res) => {
       message: 'Tag Deleted Successfully!',
     });
   } catch (error) {
-    res
-      .status(400)
-      .send({ data: null, success: false, message: 'Something Went Wrong!' });
+    res.send({ data: null, success: false, message: 'Something Went Wrong!' });
   }
 });
 
