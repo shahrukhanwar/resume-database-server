@@ -83,7 +83,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-//Create tag
+//CREATE tag
 router.post('/:id/tags', async (req, res) => {
   try {
     const candidate = await Candidate.findById(req.params.id);
@@ -101,7 +101,7 @@ router.post('/:id/tags', async (req, res) => {
   }
 });
 
-//Delete tag
+//DELETE tag
 router.delete('/:id/tags', async (req, res) => {
   try {
     const candidate = await Candidate.findById(req.params.id);
